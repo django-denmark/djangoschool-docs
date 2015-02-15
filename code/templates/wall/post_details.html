@@ -1,0 +1,15 @@
+{% extends 'wall/base.html' %}
+
+{% block content %}
+
+<h1>A detailed view of a post</h1>
+
+<div class='wall-post'>
+    <h2>{{ post.title }}</h2>
+    <p class='text'>{{ post.text }}</p>
+    <p class='fotter'>by {{ post.author.first_name }} at <span class='date'>{{ post.created_date }}</span></p>
+</div>
+
+<a href={% url 'post_wall' %}>back to wall</a>
+
+{% endblock %}

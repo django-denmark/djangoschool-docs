@@ -1,0 +1,14 @@
+{% extends 'wall/base.html' %}
+
+{% block content %}
+
+<h1>New post</h1>
+
+<form method="POST" class="post-form">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save btn btn-default">Save</button>
+</form>
+
+<a href={% url 'post_wall' %}>back to the wall</a>
+
+{% endblock %}

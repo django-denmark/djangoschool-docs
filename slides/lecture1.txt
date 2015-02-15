@@ -1,0 +1,87 @@
+% Copenhagen Django School
+% Lecture 1 by Emil Kjer
+% February 16, 2015  (school@djangocph.dk)
+
+# Welcome
+ - Purpose of the course
+ - Who is everybody
+
+
+# What is django
+ - For creating web application
+ - Authentication, forms, dynamic content, routing
+ - Secure
+ - Scaleable 
+ - Extendable
+ - Version 1.7
+
+
+# Tools
+ - Editor
+ - Terminal
+ - Django (manage.py)
+ - Runserver
+ - Errors in browser and terminal
+
+
+# Installation
+ - Python
+ - Django
+ - Make a project and apps
+ - Settings
+ - 3rd party plugins
+
+
+# Todays application
+ - Blog
+ - Walk through code
+
+
+# Models
+ - Fields, types
+ - Migrations
+
+
+# Admin
+ - Users
+ - Add model
+ - Add content
+
+
+# BREAK
+
+
+# Templates
+ - HTML (base)
+ - HTML with Django
+ - CSS
+ - Return base html
+ - Inheritance (extend other templates)
+ - Links (template tag)
+
+
+# Views
+ - Functional (there are other ways)
+ - Input output (regular expressions)
+
+
+# Urls
+ - Base symbols (^, $, P)
+ - Regular expressions
+
+
+# Forms
+ - Input
+ - Validation
+ - Store data
+ - Redirect
+
+
+# Exercises
+ - Installation
+ - Extend app with Comments feature
+
+
+# Resources
+ - https://docs.djangoproject.com/en/1.7/
+ - http://tutorial.djangogirls.org/en/index.html

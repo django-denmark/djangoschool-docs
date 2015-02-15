@@ -4,6 +4,11 @@ from django.shortcuts import redirect
 from .forms import PostForm
 from .models import Post
 
+
+def example_html_view(request):
+    return render(request, 'example_view.html', {})
+
+
 def post_list(request):
     posts = Post.objects.all()
     return render(
@@ -12,6 +17,7 @@ def post_list(request):
             'wall_posts': posts,
         }
     )
+
 
 def post_detail(request, pk):
     post = Post.objects.get(pk=pk)

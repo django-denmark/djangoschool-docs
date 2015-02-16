@@ -1,10 +1,10 @@
 % Copenhagen Django School
-% Lecture 1 by Emil Kjer
+% Lecture 1
 % February 16, 2015  (school@djangocph.dk)
 
 # Welcome
+ - Hi
  - Purpose of the course
- - Who is everybody
 
 
 # What is django
@@ -33,7 +33,7 @@
 
 
 # Todays application
- - Blog
+ - Wall
  - Walk through code
 
 

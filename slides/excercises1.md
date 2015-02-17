@@ -16,6 +16,8 @@ be less beginner friendly and will rely more on the Django documentation.
 We will include links to specific pages in the documentation throughout theese
 exercises, so if you ever get stuck they should be the first place to look.
 
+The excercises are meant to be completed in order (we are referring to changes
+we make as we go along) and you will most likely see errors if you skip ahead.
 
 Recap: Django Structure
 -----------------------
@@ -60,16 +62,14 @@ The wall app currently has 4 "routes" in `urls.py`:
 - `/post/<pk>/`, which shows a post with a specific ID
 
 Give the frontpage a new URL and change the template example to be the new
-frontpage. Test that both are working by manually entering the new URLs.
-
-For our regular examples, the symbol `^` at the start means "the URL must start
+frontpage. Test that both are working by manually entering the new URLs. For
+our regular examples, the symbol `^` at the start means "the URL must start
 with this" and the `$` at the end means "the URL must end with this". If both
 are present, it means the URL must match completely - no more, no less.
 
 Try removing either symbol (or both) and playing around with the URLs by typing
 in extra characters. For instance, removing the `$` from `post/new/` will allow
 us to type in `post/new/dalsdjadakjdajkda` and it will still show the page.
-
 Similarly, removing the `^` from `post/new/` will allows us to type in
 `adklsadkadkadksaldlakkpost/new/` and still get the right page.
 
@@ -78,12 +78,9 @@ matching.*
 
 Change your `urls.py` back to the starting point. Then create a few posts
 (using the form at `post/new/`) that have a single-word title such as "Post1",
-"Wonderful" or similar.
-
-Currently, we can see posts by looking them up by their ID - lets change it to
-find them based on their title (not recommended for actual websites).
-
-In `wall/urls.py` change line 8 to the following:
+"Wonderful" or similar. Currently, we can see posts by looking them up by their
+ID - lets change it to find them based on their title (not recommended for
+actual websites). In `wall/urls.py` change line 8 to the following:
 
     url(r'^post/(?P<title>[a-zA-Z0-9]+)/$', views.post_detail, name='post_detail'),
 
@@ -104,18 +101,16 @@ this by changing it to `[ a-zA-Z0-9]` (notice the space at the start)!*
 
 If you go to `post/post1` (replace `post1` with a title of a post you made) you
 will get an error as we are now sending a variable called `title` when it only
-expects a variable called `pk`.
-
-Open `wall/views.py` and change line 22-23 to the following:
+expects a variable called `pk`. Open `wall/views.py` and change line 22-23 to
+the following:
 
 	def post_detail(request, title):
     	post = Post.objects.get(title=title)
 
-If you go to `post/<your title>` again, it should now work correctly.
-
-However, if you go back to the frontpage with our list of posts and try
-clicking a link, you will now see that it's not working (as the links are still
-using IDs). We'll fix that in the next excercise.
+If you go to `post/<your title>` again, it should now work correctly. However,
+if you go back to the frontpage with our list of posts and try clicking a link,
+you will now see that it's not working (as the links are still using IDs).
+We'll fix that in the next excercise.
 
 The full documentation for URL configuration can be found
 [here](https://docs.djangoproject.com/en/1.7/topics/http/urls/).

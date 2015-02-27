@@ -144,7 +144,7 @@ editor and find the modules __INSTALLED_APPS_ section:
   )
 ```
 
-Add a line for the debug toolbar:
+Add a line for the debug toolbar to get:
 
 ```python
   INSTALLED_APPS = (
@@ -154,7 +154,7 @@ Add a line for the debug toolbar:
       'django.contrib.sessions',
       'django.contrib.messages',
       'django.contrib.staticfiles',
-      __'debug_toolbar',__
+      'debug_toolbar',
       'wall',
   )
 ```

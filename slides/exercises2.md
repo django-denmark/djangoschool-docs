@@ -28,6 +28,7 @@ If you were on Linux or MacOS, following the guide closely you would have done
 something like the following (no need to repeat this now unless you want to make
 a fresh installation):
 
+```
   $ mkdir djangogirls
   $ cd djangogirls
   $ python3 -m venv myvenv
@@ -39,6 +40,7 @@ a fresh installation):
     Successfully installed django
     Cleaning up...
   (myvenv) $
+```
 
 If you used another directory than __djangogirls__ and/or another environment
 name than __myenv__, then make a note of them because you will need them later.
@@ -50,8 +52,10 @@ If you installed Django before or at the last lesson, then the latest release
 number was 1.7.4. Since then version 1.7.5 has been released.
 To use the environment again, we need to activate it:
 
+```
   $ cd djangogirls
   $ source myvenv/bin/activate
+```
 
 __WARNING:__ Always be careful about upgrading. Read the release notes before
 continuing. Minor versions should usually be the same (1.7.4 -> 1.7.5), major
@@ -59,6 +63,7 @@ versions may be incompatible (1.7.x -> 1.8.x).
 
 To upgrade:
 
+```
   (myenv) $ pip install django --upgrade
   Downloading/unpacking django from https://pypi.python.org/packages/py2.py3/D/Django/Django-1.7.5-py2.py3-none-any.whl#md5=d6b529414f3093c848a69996979a1bea
   Downloading Django-1.7.5-py2.py3-none-any.whl (7.4MB): 7.4MB downloaded
@@ -69,6 +74,7 @@ To upgrade:
     Successfully installed django
   Cleaning up...
   (myvenv) $
+```
 
 Exercise 2.2: Installing extra packages
 ---------------------------------------
@@ -89,16 +95,17 @@ the panel's content
 First make sure you're in the right directory and have your virtual environment
 active (See previous exercise).
 
-  (myvenv) $ pip install django-debug-toolbar
-  Downloading/unpacking django-debug-toolbar
+```
+    (myvenv) $ pip install django-debug-toolbar
+    Downloading/unpacking django-debug-toolbar
     Downloading django_debug_toolbar-1.2.2-py2.py3-none-any.whl (202kB): 202kB downloaded
-  Requirement already satisfied (use --upgrade to upgrade): django>=1.4.2 in ./myvenv/lib/python3.4/site-packages (from           django-debug-toolbar)
-  Downloading/unpacking sqlparse (from django-debug-toolbar)
+    Requirement already satisfied (use --upgrade to upgrade): django>=1.4.2 in      ./myvenv/lib/python3.4/site-packages (from           django-debug-toolbar)
+    Downloading/unpacking sqlparse (from django-debug-toolbar)
     Downloading sqlparse-0.1.14.tar.gz (55kB): 55kB downloaded
     Running setup.py (path:/Users/mt/priv/djangogirls/myvenv/build/sqlparse/setup.py) egg_info for package sqlparse
 
-  Installing collected packages: django-debug-toolbar, sqlparse
-    Running setup.py install for sqlparse
+    Installing collected packages: django-debug-toolbar, sqlparse
+      Running setup.py install for sqlparse
       Fixing build/lib/sqlparse/__init__.py build/lib/sqlparse/exceptions.py build/lib/sqlparse/filters.py  build/lib/sqlparse/formatter.py build/lib/sqlparse/functions.py build/lib/sqlparse/keywords.py build/lib/sqlparse/lexer.py build/lib/sqlparse/pipeline.py build/lib/sqlparse/sql.py build/lib/sqlparse/tokens.py build/lib/sqlparse/utils.py build/lib/sqlparse/engine/__init__.py build/lib/sqlparse/engine/filter.py build/lib/sqlparse/engine/grouping.py
     Skipping implicit fixer: buffer
     Skipping implicit fixer: idioms
@@ -112,9 +119,10 @@ active (See previous exercise).
     changing mode of build/scripts-3.4/sqlformat from 644 to 755
 
     changing mode of /Users/mt/priv/djangogirls/myvenv/bin/sqlformat to 755
-  Successfully installed django-debug-toolbar sqlparse
-  Cleaning up...
-  (myvenv) $
+    Successfully installed django-debug-toolbar sqlparse
+    Cleaning up...
+    (myvenv) $
+```
 
 As you can see, the above looks similar to the installation of Django. If you
 look at the line: __Installing collected packages: django-debug-toolbar, sqlparse__
@@ -124,6 +132,7 @@ Installing the package is not quite enough. You also need to enable it in the
 configuration file. Open the file __djangoschool/settings.py__ in your favorite
 editor and find the modules __INSTALLED_APPS_ section:
 
+```python
   INSTALLED_APPS = (
       'django.contrib.admin',
       'django.contrib.auth',
@@ -133,9 +142,11 @@ editor and find the modules __INSTALLED_APPS_ section:
       'django.contrib.staticfiles',
       'wall',
   )
+```
 
 Add a line for the debug toolbar:
 
+```python
   INSTALLED_APPS = (
       'django.contrib.admin',
       'django.contrib.auth',
@@ -146,9 +157,11 @@ Add a line for the debug toolbar:
       __'debug_toolbar',__
       'wall',
   )
+```
 
 Save the file and now you're ready to test it:
 
+```
   (myenv) $ python manage.py runserver
   Performing system checks...
 
@@ -157,13 +170,16 @@ Save the file and now you're ready to test it:
   Django version 1.7.5, using settings 'djangoschool.settings'
   Starting development server at http://127.0.0.1:8000/
   Quit the server with CONTROL-C.
+```
 
 Now point your browser at http://127.0.0.1:8000/ and verify that the toolbar is
 visible.
 
 As an addition to this exercise, install __django-extensions__ and run:
 
+```
   (myenv) $ python manage.py
+```
 
 To verify that the number of options has grown. Take a look in the
 [documentation](http://django-extensions.readthedocs.org/) for more details and

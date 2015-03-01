@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 from .models import Post
 
 
@@ -12,7 +12,7 @@ def example_html_view(request):
 def post_list(request):
     posts = Post.objects.all()
     return render(
-        request, 
+        request,
         'wall/post_list.html', {
             'wall_posts': posts,
         }
@@ -29,7 +29,6 @@ def post_detail(request, pk):
     )
 
 
-
 def post_write_new(request):
     form = PostForm()
     if request.method == "POST":
@@ -42,10 +41,31 @@ def post_write_new(request):
     else:
         form = PostForm()
 
-
     return render(
-        request, 
+        request,
         'wall/post_new.html', {
             'form': form,
+        }
+    )
+
+
+def comment_write_new(request, post_pk):
+    form = CommentForm()
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = Post.objects.get(pk=post_pk)
+            comment.save()
+            return redirect('post_detail', pk=post_pk)
+    else:
+        form = PostForm()
+
+    return render(
+        request,
+        'wall/comment_new.html', {
+            'form': form,
+            'post_pk': post_pk,
         }
     )

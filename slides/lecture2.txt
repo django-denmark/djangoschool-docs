@@ -1,0 +1,74 @@
+% Copenhagen Django School
+% Lecture 2
+% March 02, 2015  (school@djangocph.dk)
+
+# Last time
+  - What did we talk about (Everything)
+
+# Agenda
+  - How you should use to this lecture
+  - Adding comment functionality to the wall application
+  - Play with the code.
+
+# Comments
+  - Going to use the same application (wall)
+
+# Adding functionality
+  - Model
+  - Migrate
+  - Admin
+  - Template 
+  - URL
+  - View
+
+# Model
+## (wall/models.py)
+  - foreignkey to post
+  - related_name
+  - \__str__
+
+# Migrate 
+## (terminal)
+ - python manage.py makemigrations
+ - python manage.py migrate
+
+# Admin
+## (wall/admin.py)
+  - Apps and models shown 
+  - Tabular admin
+  - Add some comments
+
+# Form
+## (wall/forms.py)
+  - Basically the same as for the Post form
+  - You can 'clean' the data (People like cake.)
+
+# Urlconf
+## (wall/urls.py)
+  - Nest it under a post in the url structure
+  - Captured the variable as post_pk
+
+# View
+## (wall/views.py)
+  - Very similar to our other form view
+  - Redirect to something useful
+  - Send the post_pk variable to the template
+
+# Post Detail Templates
+## (templates/wall/post_detail.html)
+  - Get all comments for this post via the related_name
+  - For loop
+
+# Comment Templates
+## (templates/wall/comment_new.html)
+  - Extend
+  - Create form
+  - Use 'post_pk' to make a link back to the parent post
+
+# Enjoy our new awesome comment system!
+### or else....
+
+# Exercises
+  - Add a user field to the comments
+  - Add the current user when you create a new comment
+  - Add a way to edit comments

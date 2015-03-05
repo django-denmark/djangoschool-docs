@@ -188,4 +188,101 @@ any extra extensions you may need to install for some of the options.
 Exercise 2.3: Using Django Debug Toolbar
 ----------------------------------------
 
-**add some content**
+The Django Debug Toolbar ships with a series of built-in panels.
+In addition, several third-party panels are available.
+
+__Default built-in panels__
+
+The following panels are enabled by default.
+
+__Version__
+
+Path: debug_toolbar.panels.versions.VersionsPanel
+
+Shows versions of Python, Django, and installed apps if possible.
+
+__Timer__
+
+Path: debug_toolbar.panels.timer.TimerPanel
+
+Request timer.
+
+__Settings__
+
+Path: debug_toolbar.panels.settings.SettingsPanel
+
+A list of settings in settings.py.
+
+__Headers__
+
+Path: debug_toolbar.panels.headers.HeadersPanel
+
+This panels shows the HTTP request and response headers, as well as a selection of values from the WSGI environment.
+
+Note that headers set by middleware placed before the debug toolbar middleware in MIDDLEWARE_CLASSES won’t be visible in the panel. The WSGI server itself may also add response headers such as Date and Server.
+
+__Request__
+
+Path: debug_toolbar.panels.request.RequestPanel
+
+GET/POST/cookie/session variable display.
+
+__SQL__
+
+Path: debug_toolbar.panels.sql.SQLPanel
+
+SQL queries including time to execute and links to EXPLAIN each query.
+Template
+
+Path: debug_toolbar.panels.templates.TemplatesPanel
+
+Templates and context used, and their template paths.
+
+__Static files__
+
+Path: debug_toolbar.panels.staticfiles.StaticFilesPanel
+
+Used static files and their locations (via the staticfiles finders).
+
+__Cache__
+
+Path: debug_toolbar.panels.cache.CachePanel
+
+Cache queries.
+
+__Signal__
+
+Path: debug_toolbar.panels.signals.SignalsPanel
+
+List of signals, their args and receivers.
+
+__Logging__
+
+Path: debug_toolbar.panels.logging.LoggingPanel
+
+Logging output via Python’s built-in logging module.
+
+__Redirects__
+
+Path: debug_toolbar.panels.redirects.RedirectsPanel
+
+When this panel is enabled, the debug toolbar will show an intermediate page
+upon redirect so you can view any debug information prior to redirecting. This
+page will provide a link to the redirect destination you can follow when ready.
+
+Since this behavior is annoying when you aren’t debugging a redirect, this
+panel is included but inactive by default. You can activate it by default with
+the DISABLE_PANELS configuration option.
+
+__Third-party panels__
+
+There is a number of unsupported 3rd party panels that you'll have to install
+and enable manually if you want to use them.
+Details in the [documentation](http://django-debug-toolbar.readthedocs.org/en/1.2.2/panels.html#third-party-panels)
+
+__Using the debug toolbar__
+
+Assuming your installation has worked, a DDTT logo should be on your Wall site.
+Fold out the toolbar by pressing it and look at the different sections while
+browsing around the site. Especially the __Request__ and __SQL__ sections are
+useful when tracking down problems.

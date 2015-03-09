@@ -282,7 +282,7 @@ Details in the [documentation](http://django-debug-toolbar.readthedocs.org/en/1.
 
 __Using the debug toolbar__
 
-Assuming your installation has worked, a DDTT logo should be on your Wall site.
+Assuming your installation has worked, a DjDT logo should be on your Wall site.
 Fold out the toolbar by pressing it and look at the different sections while
 browsing around the site. Especially the __Request__ and __SQL__ sections are
 useful when tracking down problems.

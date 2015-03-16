@@ -48,9 +48,6 @@
  - Add content
 
 
-# BREAK
-
-
 # Templates
  - HTML (base)
  - HTML with Django
@@ -61,7 +58,7 @@
 
 
 # Views
- - Functional (there are other ways)
+ - Functional
  - Input output (regular expressions)
 
 
@@ -85,3 +82,5 @@
 # Resources
  - https://docs.djangoproject.com/en/1.7/
  - http://tutorial.djangogirls.org/en/index.html
+ - http://google.com
+ - school@djangocph.dk

@@ -6,6 +6,15 @@ h1 {
     color: green;
 }
 
+.wall-comment {
+    border: 1px solid;
+    width: 480px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
 .wall-post {
     border: 1px solid;
     width: 500px;

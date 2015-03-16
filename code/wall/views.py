@@ -1,8 +1,6 @@
-from django.shortcuts import render
-from django.shortcuts import redirect
-
-from .forms import PostForm
-from .models import Post
+from django.shortcuts import render, redirect, get_object_or_404
+from .forms import PostForm, CommentForm
+from .models import Post, Comment
 
 
 def example_html_view(request):
@@ -12,7 +10,7 @@ def example_html_view(request):
 def post_list(request):
     posts = Post.objects.all()
     return render(
-        request, 
+        request,
         'wall/post_list.html', {
             'wall_posts': posts,
         }
@@ -29,7 +27,6 @@ def post_detail(request, pk):
     )
 
 
-
 def post_write_new(request):
     form = PostForm()
     if request.method == "POST":
@@ -42,10 +39,51 @@ def post_write_new(request):
     else:
         form = PostForm()
 
+    return render(
+        request,
+        'wall/post_new.html', {
+            'form': form,
+        }
+    )
+
+
+def comment_write_new(request, post_pk):
+    form = CommentForm()
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = Post.objects.get(pk=post_pk)
+            comment.save()
+            return redirect('post_detail', pk=post_pk)
+    else:
+        form = CommentForm()
 
     return render(
-        request, 
-        'wall/post_new.html', {
+        request,
+        'wall/comment_new.html', {
+            'form': form,
+            'post_pk': post_pk,
+        }
+    )
+
+
+def comment_edit(request, pk):
+
+    obj = get_object_or_404(Comment, pk=pk)
+
+    if request.method == "POST":
+        form = CommentForm(request.POST, instance=obj)
+        if form.is_valid():
+            form.save()
+            return redirect('post_detail', pk=obj.post.pk)
+    else:
+        form = CommentForm(instance=obj)
+
+    return render(
+        request,
+        'wall/comment_edit.html', {
             'form': form,
         }
     )

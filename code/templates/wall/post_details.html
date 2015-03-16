@@ -8,6 +8,16 @@
     <h2>{{ post.title }}</h2>
     <p class='text'>{{ post.text }}</p>
     <p class='fotter'>by {{ post.author.first_name }} at <span class='date'>{{ post.created_date }}</span></p>
+
+    {% for comment in post.comments.all %}
+        <div class='wall-comment'>
+            <h3>{{ comment.title }}</h3>
+            <p class='text'>{{ comment.text }}</p>
+            <p class='fotter'><span class='date'>{{ comment.created_date }}</span></p>
+            <a href="{% url 'comment_edit' comment.pk %}">Edit comment</a>
+        </div>
+    {% endfor %}
+    <a href={% url 'comment_new' post_pk=post.pk %}>Add a comment</a>
 </div>
 
 <a href={% url 'post_wall' %}>back to wall</a>

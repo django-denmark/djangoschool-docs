@@ -11,4 +11,9 @@ urlpatterns = patterns('',
         views.comment_write_new,
         name='comment_new'
     ),
+    url(
+        r'^comment/(?P<pk>[0-9]+)/$',
+        views.comment_edit,
+        name='comment_edit'
+    ),
 )

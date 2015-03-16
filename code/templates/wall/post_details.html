@@ -14,6 +14,7 @@
             <h3>{{ comment.title }}</h3>
             <p class='text'>{{ comment.text }}</p>
             <p class='fotter'><span class='date'>{{ comment.created_date }}</span></p>
+            <a href="{% url 'comment_edit' comment.pk %}">Edit comment</a>
         </div>
     {% endfor %}
     <a href={% url 'comment_new' post_pk=post.pk %}>Add a comment</a>

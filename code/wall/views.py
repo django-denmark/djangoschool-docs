@@ -1,8 +1,6 @@
-from django.shortcuts import render
-from django.shortcuts import redirect
-
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PostForm, CommentForm
-from .models import Post
+from .models import Post, Comment
 
 
 def example_html_view(request):
@@ -60,12 +58,32 @@ def comment_write_new(request, post_pk):
             comment.save()
             return redirect('post_detail', pk=post_pk)
     else:
-        form = PostForm()
+        form = CommentForm()
 
     return render(
         request,
         'wall/comment_new.html', {
             'form': form,
             'post_pk': post_pk,
+        }
+    )
+
+
+def comment_edit(request, pk):
+
+    obj = get_object_or_404(Comment, pk=pk)
+
+    if request.method == "POST":
+        form = CommentForm(request.POST, instance=obj)
+        if form.is_valid():
+            form.save()
+            return redirect('post_detail', pk=obj.post.pk)
+    else:
+        form = CommentForm(instance=obj)
+
+    return render(
+        request,
+        'wall/comment_edit.html', {
+            'form': form,
         }
     )
